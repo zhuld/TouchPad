@@ -1,5 +1,5 @@
 /**
- * @file CategoryType.qml
+ * @file qml/config/CategoryType.qml
  * @brief 分类卡片配置类型（纯数据 QtObject）
  *
  * 定义 System.qml 等页面组装 Category 卡片所需的属性模板：

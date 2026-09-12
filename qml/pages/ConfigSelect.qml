@@ -1,5 +1,5 @@
 /**
- * @file ConfigSelect.qml
+ * @file qml/pages/ConfigSelect.qml
  * @brief 配置文件选择页（启动页，configSetting = 0 时加载）
  *
  * 上半部：LCD 风格大时钟（"88:88:88" 底纹 + 冒号 500ms 闪烁）与日期；

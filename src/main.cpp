@@ -1,5 +1,5 @@
 /**
- * @file main.cpp
+ * @file src/main.cpp
  * @brief TouchPad 应用程序入口
  *
  * 功能概览：

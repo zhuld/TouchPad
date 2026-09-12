@@ -1,5 +1,5 @@
 /**
- * @file Mediaplayer/Sound.qml
+ * @file qml/pages/mediaplayer/Sound.qml
  * @brief 背景音乐页（媒体播放器）
  *
  * 左卡片"背景音乐内容"：Sound 1~3 选择（D31~33）；

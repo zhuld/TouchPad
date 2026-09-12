@@ -1,5 +1,5 @@
 /**
- * @file Category.qml
+ * @file qml/custom/Category.qml
  * @brief 分类卡片容器
  *
  * 结构（自上而下）：

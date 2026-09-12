@@ -1,5 +1,5 @@
 /**
- * @file Mediaplayer/Picture.qml
+ * @file qml/pages/mediaplayer/Picture.qml
  * @brief 图片浏览页（媒体播放器）
  *
  * 左卡片"图片内容"：Picture 1~5 选择（D41~45）；

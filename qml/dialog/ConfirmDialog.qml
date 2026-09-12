@@ -1,5 +1,5 @@
 /**
- * @file ConfirmDialog.qml
+ * @file qml/dialog/ConfirmDialog.qml
  * @brief 通用确认对话框（危险操作二次确认）
  *
  * 用法：dialogTitle/dialogInfomation/dialogIcon 定制文案与图标，

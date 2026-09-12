@@ -1,5 +1,5 @@
 /**
- * @file Icon.qml
+ * @file qml/custom/Icon.qml
  * @brief 基础图标组件（IconLabel 封装）
  *
  * 默认填充父项、图标取 80% 高度并使用全局文本色，

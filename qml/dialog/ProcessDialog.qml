@@ -1,5 +1,5 @@
 /**
- * @file ProcessDialog.qml
+ * @file qml/dialog/ProcessDialog.qml
  * @brief 过程等待对话框（BusyIndicator 转圈提示）
  *
  * visible 绑定 Global.digital[channel]：中控把该数字反馈位置 1 时弹出，

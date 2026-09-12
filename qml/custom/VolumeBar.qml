@@ -1,5 +1,5 @@
 /**
- * @file VolumeBar.qml
+ * @file qml/custom/VolumeBar.qml
  * @brief 音量条组件（垂直滑块 + 刻度 + 静音按钮）
  *
  * 结构：label 标题、垂直 Slider（背景为绿→橙→红渐变条，
@@ -20,7 +20,7 @@ import QtQuick.Shapes
 import QtQuick.Effects
 import QtQuick.Controls.Fusion
 
-import "../Js/crestroncip.js" as CrestronCIP
+import "../js/crestroncip.js" as CrestronCIP
 
 Item {
     id: controlVolumeBar

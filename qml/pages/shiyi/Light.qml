@@ -1,5 +1,5 @@
 /**
- * @file Shiyi/Light.qml
+ * @file qml/pages/shiyi/Light.qml
  * @brief 灯光控制页（test=true 页签，仅调试模式显示）
  *
  * 左卡片（ShiyiMZ.light）：分组灯光开关（VButton），

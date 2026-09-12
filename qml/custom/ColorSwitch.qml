@@ -1,5 +1,5 @@
 /**
- * @file ColorSwitch.qml
+ * @file qml/custom/ColorSwitch.qml
  * @brief 胶囊式开关（基于 T.Switch，用于标题栏深浅主题切换）
  *
  * 滑块式指示器：勾选时轨道变色、滑块右移并渐显 ✓；

@@ -1,5 +1,5 @@
 /**
- * @file Test.qml
+ * @file qml/pages/Test.qml
  * @brief 调试测试页（test=true 页签，仅 showChannel 调试模式下可见）
  *
  * 左卡片：RadialGradient 渐变按钮的实时预览（按压联动高光），

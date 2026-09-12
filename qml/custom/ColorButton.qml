@@ -1,5 +1,5 @@
 /**
- * @file ColorButton.qml
+ * @file qml/custom/ColorButton.qml
  * @brief 通用颜色按钮（基于 T.Button）
  *
  * 视觉：径向渐变圆角底板 + 深色描边 + 阴影；

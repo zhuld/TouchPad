@@ -1,5 +1,5 @@
 /**
- * @file Mediaplayer/Web.qml
+ * @file qml/pages/mediaplayer/Web.qml
  * @brief 网页展示页（媒体播放器）
  *
  * 左卡片"网页"：Baidu/Bing/Action/Clock 页面选择（D81~84）；

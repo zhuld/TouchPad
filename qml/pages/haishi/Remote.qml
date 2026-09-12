@@ -1,5 +1,5 @@
 /**
- * @file Haishi/Remote.qml
+ * @file qml/pages/haishi/Remote.qml
  * @brief 远程会议页（海事大学）
  *
  * 三列布局（通道硬编码在页内 ListModel，不走 Config 数据文件）：

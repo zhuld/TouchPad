@@ -1,5 +1,5 @@
 /**
- * @file ContentColumn.qml
+ * @file qml/pages/ContentColumn.qml
  * @brief 主内容区（页签栏在左侧的布局，tabOnBottom=false 的配置使用）
  *
  * 结构：左侧竖排页签栏（MyTabButton 列表，选中态由中控反馈 pageChannel 驱动，
@@ -13,7 +13,7 @@ pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Layouts
 
-import "../Dialog"
+import "../dialog"
 
 Item {
     id: main

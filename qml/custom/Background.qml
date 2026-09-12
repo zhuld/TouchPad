@@ -1,5 +1,5 @@
 /**
- * @file Background.qml
+ * @file qml/custom/Background.qml
  * @brief 页面卡片背景底板
  *
  * 圆角矩形 + 纵向渐变（顶部 20% 处略亮、下方同色），营造立体基座效果；

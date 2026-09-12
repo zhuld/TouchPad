@@ -1,5 +1,5 @@
 /**
- * @file Mediaplayer/Movie.qml
+ * @file qml/pages/mediaplayer/Movie.qml
  * @brief 视频播放页（媒体播放器）
  *
  * 左卡片"视频内容"：Movie 1~5 播放选择（D21~25）；

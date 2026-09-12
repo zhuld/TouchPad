@@ -1,5 +1,5 @@
 /**
- * @file Mediaplayer/PPT.qml
+ * @file qml/pages/mediaplayer/PPT.qml
  * @brief PPT 演示页（媒体播放器）
  *
  * 左卡片"PPT 内容"：PPT 1~5 选择（D51~55）；

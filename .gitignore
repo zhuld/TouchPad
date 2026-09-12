@@ -83,3 +83,6 @@ CMakeLists.txt.user*
 /build*/
 /.qtcreator/
 /output/
+
+# IDE / 编辑器配置（含机器相关的 Qt 绝对路径，不应入库）
+.vscode/

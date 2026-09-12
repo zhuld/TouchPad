@@ -1,5 +1,5 @@
 /**
- * @file Mediaplayer/MediaSystem.qml
+ * @file qml/pages/mediaplayer/MediaSystem.qml
  * @brief 系统控制页（媒体播放器）
  *
  * 左卡片"运行程序"：Edge/记事本打开与关闭（D74~77）；

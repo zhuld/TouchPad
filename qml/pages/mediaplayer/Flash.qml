@@ -1,5 +1,5 @@
 /**
- * @file Mediaplayer/Flash.qml
+ * @file qml/pages/mediaplayer/Flash.qml
  * @brief Flash 播放页（媒体播放器）
  *
  * 左卡片"Flash 内容"：Flash 1~5 选择（D61~65）；

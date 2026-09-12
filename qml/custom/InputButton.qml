@@ -1,5 +1,5 @@
 /**
- * @file InputButton.qml
+ * @file qml/custom/InputButton.qml
  * @brief 可拖拽的输入源按钮（信号切换场景）
  *
  * 结构：半透明底卡（back2，作为放置时的视觉参照）+ 可拖动前卡（back）；

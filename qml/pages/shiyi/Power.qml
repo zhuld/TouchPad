@@ -1,5 +1,5 @@
 /**
- * @file Shiyi/Power.qml
+ * @file qml/pages/shiyi/Power.qml
  * @brief 设备电源页
  *
  * 左卡片（ShiyiMZ.powerTV）：显示设备电源按钮网格（VButton）；

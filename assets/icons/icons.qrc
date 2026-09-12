@@ -1,0 +1,69 @@
+<RCC>
+    <!--
+        图标资源清单。
+        prefix="/icons" + <file> 中的裸文件名 → 资源路径 :/icons/<文件名>，
+        例如 <file>camera.svg</file> → "qrc:/icons/camera.svg"（QML 中常写作
+        省略扩展名的 "qrc:/icons/camera"）。
+
+        <file> 路径相对本 .qrc 文件所在目录解析，因此这里只写文件名。
+        新增图标请同时登记到本文件，否则不会被编译进程序。
+    -->
+    <qresource prefix="/icons">
+        <file>android.svg</file>
+        <file>bofang.svg</file>
+        <file>camera.svg</file>
+        <file>chongqi.svg</file>
+        <file>close.svg</file>
+        <file>config.svg</file>
+        <file>control.png</file>
+        <file>danhuamian.svg</file>
+        <file>deng.svg</file>
+        <file>dengju.svg</file>
+        <file>down.svg</file>
+        <file>down2.svg</file>
+        <file>fangda.svg</file>
+        <file>flash.svg</file>
+        <file>guanbiruanjian.svg</file>
+        <file>guanji.svg</file>
+        <file>hdmi.svg</file>
+        <file>HDMIjiekou.svg</file>
+        <file>home.svg</file>
+        <file>houyige.svg</file>
+        <file>huiyi.svg</file>
+        <file>jieneng.svg</file>
+        <file>jigui.svg</file>
+        <file>kouxiang.svg</file>
+        <file>led.svg</file>
+        <file>left.svg</file>
+        <file>music.svg</file>
+        <file>mute.svg</file>
+        <file>pingmugongxiang.svg</file>
+        <file>pip.svg</file>
+        <file>ppt.svg</file>
+        <file>qianyige.svg</file>
+        <file>quanguan.svg</file>
+        <file>quankai.svg</file>
+        <file>right.svg</file>
+        <file>shexiangtou.svg</file>
+        <file>shipin.svg</file>
+        <file>shipinhuiyi.svg</file>
+        <file>shouxie.svg</file>
+        <file>suoxiao.svg</file>
+        <file>test.svg</file>
+        <file>tingzhibofang.svg</file>
+        <file>tishi.svg</file>
+        <file>tupianji.svg</file>
+        <file>unmute.svg</file>
+        <file>up.svg</file>
+        <file>vr.svg</file>
+        <file>web.svg</file>
+        <file>wuxiantouping.svg</file>
+        <file>yitiji.svg</file>
+        <file>yunxinruanjian.svg</file>
+        <file>zanting.svg</file>
+        <file>zhuji.svg</file>
+        <file>zuihou.svg</file>
+        <file>zuiqian.svg</file>
+        <file>center.svg</file>
+    </qresource>
+</RCC>

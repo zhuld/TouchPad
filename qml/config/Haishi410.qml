@@ -1,8 +1,8 @@
 /**
- * @file Haishi410.qml
+ * @file qml/config/Haishi410.qml
  * @brief 海事大学 410 沉浸式教室配置
  *
- * 页面列表：远程 / 单画面 / VR / LED屏 / 摄像机 / 测试（Pages/Haishi/*）；
+ * 页面列表：远程 / 单画面 / VR / LED屏 / 摄像机 / 测试（pages/haishi/*）；
  *   每项含页签通道 pageChannel、图标与可选的禁用通道 disBtnChannel，
  *   test=true 的页签仅调试时显示；
  * initValue：连接后预置的反馈初值（模拟量通道 1 = 19661）；
@@ -23,7 +23,7 @@ QtObject {
     readonly property ListModel pageList: ListModel {
         ListElement {
             name: qsTr("远程")
-            pageUrl: "../Pages/Haishi/Remote.qml"
+            pageUrl: "../pages/haishi/Remote.qml"
             iconUrl: "qrc:/icons/shipinhuiyi"
             test: false
             pageChannel: 16
@@ -31,28 +31,28 @@ QtObject {
         }
         ListElement {
             name: qsTr("单画面")
-            pageUrl: "../Pages/Haishi/SingleScreen.qml"
+            pageUrl: "../pages/haishi/SingleScreen.qml"
             iconUrl: "qrc:/icons/danhuamian"
             test: false
             pageChannel: 12
         }
         ListElement {
             name: qsTr("VR")
-            pageUrl: "../Pages/Haishi/VR.qml"
+            pageUrl: "../pages/haishi/VR.qml"
             iconUrl: "qrc:/icons/vr"
             test: false
             pageChannel: 13
         }
         ListElement {
             name: qsTr("LED屏")
-            pageUrl: "../Pages/Haishi/LED.qml"
+            pageUrl: "../pages/haishi/LED.qml"
             iconUrl: "qrc:/icons/led"
             test: false
             pageChannel: 14
         }
         ListElement {
             name: qsTr("摄像机")
-            pageUrl: "../Pages/Haishi/Camera.qml"
+            pageUrl: "../pages/haishi/Camera.qml"
             iconUrl: "qrc:/icons/camera"
             test: false
             pageChannel: 15
@@ -60,7 +60,7 @@ QtObject {
 
         ListElement {
             name: qsTr("测试")
-            pageUrl: "../Pages/Test.qml"
+            pageUrl: "../pages/Test.qml"
             iconUrl: "qrc:/icons/test"
             test: true
             pageChannel: 18

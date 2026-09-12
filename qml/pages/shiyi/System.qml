@@ -1,5 +1,5 @@
 /**
- * @file Shiyi/System.qml
+ * @file qml/pages/shiyi/System.qml
  * @brief 系统页（第一人民医院：常用开关 + 场景模式）
  *
  * 左卡片"系统"：MyButton 按钮网格（数据取 ShiyiMZ.system，

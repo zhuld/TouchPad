@@ -1,5 +1,5 @@
 /**
- * @file MyTabButton.qml
+ * @file qml/custom/MyTabButton.qml
  * @brief 标签页按钮（基于 T.TabButton，图标在上、文字在下）
  *
  * 状态：checked 绑定 Global.digital[channel]（选中态由中控反馈驱动）；
@@ -16,7 +16,7 @@ import QtQuick.Effects
 import QtQuick.Shapes
 import QtQuick.Templates as T
 
-import "../Js/crestroncip.js" as CrestronCIP
+import "../js/crestroncip.js" as CrestronCIP
 
 T.TabButton {
     id: controlMyTabButton

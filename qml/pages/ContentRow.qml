@@ -1,5 +1,5 @@
 /**
- * @file ContentRow.qml
+ * @file qml/pages/ContentRow.qml
  * @brief 主内容区（页签栏在底部的布局，tabOnBottom=true 的配置使用）
  *
  * 结构与 ContentColumn 一致：底部横排页签栏（超宽时可横向滚动）+
@@ -13,7 +13,7 @@ pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Layouts
 
-import "../Dialog"
+import "../dialog"
 
 Item {
     id: main

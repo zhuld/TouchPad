@@ -1,5 +1,5 @@
 /**
- * @file Haishi/LED.qml
+ * @file qml/pages/haishi/LED.qml
  * @brief LED 屏控制页（海事大学）
  *
  * 左卡片"亮度"：VolumeBar 复用为亮度滑条（模拟量 A1，量程 0~10，

@@ -41,15 +41,6 @@ set(CMAKE_DISABLE_FIND_PACKAGE_Qt6QmlAssetDownloaderPrivate TRUE)
 find_package(Qt6 REQUIRED COMPONENTS Quick)
 
 # ---------------------------------------------------------------
-# 将 Global.qml 标记为 QML 单例（singleton）：
-#   QT_QML_SINGLETON_TYPE TRUE —— QML 代码中可直接以 "Global.xxx" 访问，
-#   无需实例化，在整个模块内共享同一份数据。
-# ---------------------------------------------------------------
-set_source_files_properties(
-    Global.qml
-    PROPERTIES QT_QML_SINGLETON_TYPE TRUE)
-
-# ---------------------------------------------------------------
 # Qt 项目统一初始化（Qt 6.3+ 提供）：
 #   自动设置 C++17 标准、启用 AUTOMOC/AUTORCC/AUTOUIC、配置 QML/资源构建约定。
 #   REQUIRES 6.10 —— 要求 Qt 版本 >= 6.10，否则配置失败。
@@ -58,93 +49,31 @@ qt_standard_project_setup(REQUIRES 6.10)
 
 # ---------------------------------------------------------------
 # 创建可执行目标 TouchPad：
-#   main.cpp —— C++ 入口（QGuiApplication + QQmlApplicationEngine）
-#   res.qrc  —— 静态资源文件（配合 CMAKE_AUTORCC 自动编译）
+#   src/main.cpp —— C++ 入口（QGuiApplication + QQmlApplicationEngine）
+#   assets/*/*.qrc —— 静态资源清单（配合 CMAKE_AUTORCC 自动编译）：
+#       assets/icons/icons.qrc    → prefix "/icons"  图标（含窗口图标 control.png）
+#       assets/images/images.qrc  → prefix "/images" 场所背景图
+#       assets/fonts/fonts.qrc    → prefix "/fonts"  界面字体（由 Global.qml 的 FontLoader 加载）
+#   每个 .qrc 自带 prefix，最终的资源路径形如 ":/icons/camera.svg"，
+#   与 QML/C++ 中的 "qrc:/icons/camera"、"QIcon(\":/icons/control.png\")" 一一对应。
 # ---------------------------------------------------------------
 qt_add_executable(TouchPad
-    main.cpp res.qrc
+    src/main.cpp
+    assets/icons/icons.qrc
+    assets/images/images.qrc
+    assets/fonts/fonts.qrc
 )
 
 # ---------------------------------------------------------------
-# 为 TouchPad 添加 QML 模块：
-#   URI TouchPad —— 模块的导入命名空间，QML 中写作 "import TouchPad"
-#   VERSION 1.0  —— 模块版本号（主版本.次版本）
-#   QML_FILES    —— 参与编译的 QML 文件清单（编入 qrc 并自动生成 qmldir/qmltypes）：
-#       Global.qml              —— 全局单例
-#       Config/*.qml            —— 各配置页面（Haishi410 / MediaPlayer / ShiyiMZ 等）
-#       Custom/*.qml            —— 自定义控件（按钮、开关、旋钮、音量条等）
-#       Dialog/*.qml            —— 对话框（确认 / 密码 / 进程 / 设置）
-#       Js/crestroncip.js       —— Crestron CIP 协议 JS 脚本
-#       Pages/*.qml             —— 页面（配置选择、连接、内容布局、测试等）
-#       Pages/Haishi/*.qml      —— 海诗品牌设备控制页（摄像头 / LED / 遥控 / 单屏 / VR）
-#       Pages/Mediaplayer/*.qml —— 媒体播放页（Flash / 摄像头 / 系统 / 影片 / 图片 / PPT / 声音 / 网页）
-#       Pages/Shiyi/*.qml       —— 世仪品牌设备控制页（摄像头 / 灯光 / 电源 / 系统 / 视频 / 音量）
-#   SOURCES      —— 与 QML 模块绑定的 C++ 源码：
-#       TcpClient / TcpServer   —— TCP 网络通信客户端与服务器封装
-#   RESOURCES    —— 模块内附加资源文件（agent.md 说明文档）
+# 添加 QML 模块子目录：
+#   QML 模块定义（qt_add_qml_module）位于 qml/CMakeLists.txt。
+#   模块定义必须放在 qml/ 目录内，资源路径才会是
+#       :/qt/qml/TouchPad/Main.qml
+#   而不是 :/qt/qml/TouchPad/qml/Main.qml（后者会导致
+#   main.cpp 的 loadFromModule("TouchPad", "Main") 找不到 Main 组件）。
+#   必须置于 qt_add_executable 之后：qt_add_qml_module 需要一个已存在的目标。
 # ---------------------------------------------------------------
-qt_add_qml_module(TouchPad
-    URI TouchPad
-    VERSION 1.0
-    QML_FILES
-        Main.qml
-        Global.qml
-        Config/CategoryType.qml
-        Config/ConfigSet.qml
-        Config/Haishi410.qml
-        Config/MediaPlayer.qml
-        Config/ShiyiMZ.qml
-        Custom/Background.qml
-        Custom/Category.qml
-        Custom/ColorButton.qml
-        Custom/ColorSwitch.qml
-        Custom/ControlPad.qml
-        Custom/Icon.qml
-        Custom/InputButton.qml
-        Custom/MyButton.qml
-        Custom/MyIconLabel.qml
-        Custom/MySwitch.qml
-        Custom/MyTabButton.qml
-        Custom/Output.qml
-        Custom/VButton.qml
-        Custom/VolumeBar.qml
-        Dialog/ConfirmDialog.qml
-        Dialog/PasswordDialog.qml
-        Dialog/ProcessDialog.qml
-        Dialog/SettingDialog.qml
-        Js/crestroncip.js
-        Pages/Haishi/Camera.qml
-        Pages/Haishi/LED.qml
-        Pages/Haishi/Remote.qml
-        Pages/Haishi/SingleScreen.qml
-        Pages/Haishi/VR.qml
-        Pages/Mediaplayer/Flash.qml
-        Pages/Mediaplayer/MedaiCamera.qml
-        Pages/Mediaplayer/MediaSystem.qml
-        Pages/Mediaplayer/Movie.qml
-        Pages/Mediaplayer/Picture.qml
-        Pages/Mediaplayer/PPT.qml
-        Pages/Mediaplayer/Sound.qml
-        Pages/Mediaplayer/Web.qml
-        Pages/Shiyi/CameraControl.qml
-        Pages/Shiyi/Light.qml
-        Pages/Shiyi/Power.qml
-        Pages/Shiyi/System.qml
-        Pages/Shiyi/Video.qml
-        Pages/Shiyi/Volume.qml
-        Pages/ConfigSelect.qml
-        Pages/Connect.qml
-        Pages/ContentColumn.qml
-        Pages/ContentRow.qml
-        Pages/Test.qml
-    SOURCES
-        cpp/TcpClient.cpp
-        cpp/TcpClient.h
-        cpp/TcpServer.cpp
-        cpp/TcpServer.h
-    RESOURCES
-        agent.md
-)
+add_subdirectory(qml)
 
 # ---------------------------------------------------------------
 # 目标属性设置（macOS bundle / Windows / Android 相关）：
@@ -190,7 +119,7 @@ install(TARGETS TouchPad
 
 # ---------------------------------------------------------------
 # 头文件搜索目录：
-#   将 <项目根>/cpp 目录加入 TouchPad 的私有（PRIVATE）包含路径，
-#   使 main.cpp 等可直接 #include "TcpClient.h"。
+#   将 <项目根>/src/network 目录加入 TouchPad 的私有（PRIVATE）包含路径，
+#   使 src/main.cpp 等可直接 #include "TcpClient.h"。
 # ---------------------------------------------------------------
-target_include_directories(TouchPad PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/cpp)
+target_include_directories(TouchPad PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/network)

@@ -1,5 +1,5 @@
 /**
- * @file VButton.qml
+ * @file qml/custom/VButton.qml
  * @brief 纵向图标按钮（圆形图标在上、文字标签在下）
  *
  * 行为与 MyButton 一致：checked 绑定 Global.digital[channel]，
@@ -15,7 +15,7 @@ import QtQuick.Effects
 import QtQuick.Shapes
 import QtQuick.Templates as T
 
-import "../Js/crestroncip.js" as CrestronCIP
+import "../js/crestroncip.js" as CrestronCIP
 
 T.Button {
     id: controlVButton

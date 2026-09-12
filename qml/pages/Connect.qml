@@ -1,5 +1,5 @@
 /**
- * @file Connect.qml
+ * @file qml/pages/Connect.qml
  * @brief 连接页（已选配置、等待与中控建立连接）
  *
  * 上半部：与 ConfigSelect 相同的 LCD 风格时钟；

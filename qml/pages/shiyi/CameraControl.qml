@@ -1,5 +1,5 @@
 /**
- * @file Shiyi/CameraControl.qml
+ * @file qml/pages/shiyi/CameraControl.qml
  * @brief 摄像机控制页（云台 + 预置位）
  *
  * 左卡片：摄像机选择按钮行（ShiyiMZ.cameraControl，D 键）+

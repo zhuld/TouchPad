@@ -1,5 +1,5 @@
 /**
- * @file Main.qml
+ * @file qml/Main.qml
  * @brief 主窗口（TouchPad 模块根组件）
  *
  * 职责：
@@ -12,8 +12,8 @@
  */
 import QtQuick
 
-import "./Js/crestroncip.js" as CrestronCIP
-import "./Dialog"
+import "./js/crestroncip.js" as CrestronCIP
+import "./dialog"
 
 Window {
     id: root
@@ -266,7 +266,7 @@ Window {
         height: parent.height - titleBar.height
         // 已连接：标签在底部用 ContentRow，否则用 ContentColumn；
         // 未连接：未选配置进 ConfigSelect，已选配置进 Connect 连接页
-        source: ping.running ? (Global.configList[Global.settings.configSetting].tabOnBottom ? "Pages/ContentRow.qml" : "Pages/ContentColumn.qml") : (Global.settings.configSetting === 0 ? "Pages/ConfigSelect.qml" : "Pages/Connect.qml")
+        source: ping.running ? (Global.configList[Global.settings.configSetting].tabOnBottom ? "pages/ContentRow.qml" : "pages/ContentColumn.qml") : (Global.settings.configSetting === 0 ? "pages/ConfigSelect.qml" : "pages/Connect.qml")
     }
 
     // ======================== 协议信号分发 ========================

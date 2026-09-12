@@ -1,5 +1,5 @@
 /**
- * @file Mediaplayer/MedaiCamera.qml
+ * @file qml/pages/mediaplayer/MediaCamera.qml
  * @brief 摄像头采集页（媒体播放器）
  *
  * 左卡片"摄像头模式"：Camera 1~5 选择（D101~105）；

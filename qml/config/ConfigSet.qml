@@ -1,9 +1,9 @@
 /**
- * @file ConfigSet.qml
+ * @file qml/config/ConfigSet.qml
  * @brief 启动页配置（configSetting = 0 时使用）
  *
  * 仅提供标题/版本/背景等元信息；pageList 为空，
- * 使 Main.qml 的 Loader 进入"配置文件选择"页（Pages/ConfigSelect.qml）。
+ * 使 Main.qml 的 Loader 进入"配置文件选择"页（pages/ConfigSelect.qml）。
  * processDialogChannel：启动页占用的过程等待对话框通道。
  */
 

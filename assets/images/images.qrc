@@ -1,0 +1,13 @@
+<RCC>
+    <!--
+        图片资源清单。
+        prefix="/images" + <file> 中的裸文件名 → 资源路径 :/images/<文件名>，
+        QML 中通过 "qrc:/images/xxx.jpg" 引用（各 Config/*.qml 的 background 属性）。
+    -->
+    <qresource prefix="/images">
+        <file>background.jpg</file>
+        <file>haishi.jpg</file>
+        <file>mediaplayer.jpg</file>
+        <file>shiyi.jpg</file>
+    </qresource>
+</RCC>

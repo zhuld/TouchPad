@@ -1,5 +1,5 @@
 /**
- * @file Shiyi/Volume.qml
+ * @file qml/pages/shiyi/Volume.qml
  * @brief 音量控制页
  *
  * 左卡片"音频输入"：鹅颈话筒/手持话筒/电脑音频三条 VolumeBar

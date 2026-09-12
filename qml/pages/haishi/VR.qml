@@ -1,5 +1,5 @@
 /**
- * @file Haishi/VR.qml
+ * @file qml/pages/haishi/VR.qml
  * @brief VR 教学页（海事大学）
  *
  * 左卡片"输出"：大屏左/大屏右/地插输出（D161~164）；

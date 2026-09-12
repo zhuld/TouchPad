@@ -1,5 +1,5 @@
 /**
- * @file Shiyi/Video.qml
+ * @file qml/pages/shiyi/Video.qml
  * @brief 视频矩阵页（拖拽切换输入/输出）
  *
  * 左卡片"输出信号"：Output 卡片网格（数据取 ShiyiMZ.vidoeOutput），

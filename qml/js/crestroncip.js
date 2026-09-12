@@ -1,5 +1,5 @@
 /**
- * @file crestroncip.js
+ * @file qml/js/crestroncip.js
  * @brief Crestron SIMPL Windows 的 CIP 协议封装库（QML JS 模块）
  *
  * 负责在两套网络角色之间收发 CIP 协议数据帧：

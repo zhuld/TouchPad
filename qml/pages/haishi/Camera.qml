@@ -1,5 +1,5 @@
 /**
- * @file Haishi/Camera.qml
+ * @file qml/pages/haishi/Camera.qml
  * @brief 摄像机控制页（海事大学）
  *
  * 左卡片：ControlPad 方向盘（基通道 52：上/下/左/右/确认/缩放）；

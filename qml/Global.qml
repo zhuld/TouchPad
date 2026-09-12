@@ -4,6 +4,7 @@ import QtQuick
 import QtCore
 
 /**
+ * @file qml/Global.qml
  * @brief 全局单例对象（QML 任意位置可直接使用 Global.xxx 访问）
  *
  * 集中管理三大类全局状态：

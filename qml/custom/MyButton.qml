@@ -1,5 +1,5 @@
 /**
- * @file MyButton.qml
+ * @file qml/custom/MyButton.qml
  * @brief 最常用的数字(D)通道按钮（基于 T.Button）
  *
  * 状态：checked 绑定 Global.digital[channel]，由中控反馈驱动；
@@ -17,8 +17,8 @@ import QtQuick.Effects
 import QtQuick.Shapes
 import QtQuick.Templates as T
 
-import "../Js/crestroncip.js" as CrestronCIP
-import "../Dialog"
+import "../js/crestroncip.js" as CrestronCIP
+import "../dialog"
 
 T.Button {
     id: controlMyButton

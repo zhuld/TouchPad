@@ -1,0 +1,14 @@
+<RCC>
+    <!--
+        字体资源清单。
+        prefix="/fonts" + <file> 中的裸文件名 → 资源路径 :/fonts/<文件名>，
+        由 Global.qml 中的 FontLoader.source 加载。
+
+        新增字体后除登记到本文件外，还需在 Global.qml 中增加对应的 FontLoader。
+    -->
+    <qresource prefix="/fonts">
+        <file>AlibabaPuHuiTi-3-55-Regular.ttf</file>
+        <file>SourceCodePro-Regular.ttf</file>
+        <file>TP-LCD.TTF</file>
+    </qresource>
+</RCC>

@@ -1,5 +1,5 @@
 /**
- * @file PasswordDialog.qml
+ * @file qml/dialog/PasswordDialog.qml
  * @brief 设置入口密码框（进入系统设置前的身份验证）
  *
  * 界面：3x4 数字键盘（0-9、退格 ⤺、确认 ⤍），最多输入 6 位；

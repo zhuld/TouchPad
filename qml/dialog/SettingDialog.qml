@@ -1,5 +1,5 @@
 /**
- * @file SettingDialog.qml
+ * @file qml/dialog/SettingDialog.qml
  * @brief 系统设置对话框（密码验证通过后打开）
  *
  * 设置项（Grid 两列布局）：
@@ -17,7 +17,7 @@ import QtQuick.Controls
 import QtQuick.Controls.Fusion
 
 import "../"
-import "../Custom"
+import "../custom"
 
 Dialog {
     id: rootSetting

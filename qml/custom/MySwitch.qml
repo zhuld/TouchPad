@@ -1,5 +1,5 @@
 /**
- * @file MySwitch.qml
+ * @file qml/custom/MySwitch.qml
  * @brief 开关型数字通道按钮（滑块样式）
  *
  * 状态：checked 绑定 Global.digital[channel]；
@@ -14,7 +14,7 @@ import QtQuick
 import QtQuick.Effects
 import QtQuick.Templates as T
 
-import "../Js/crestroncip.js" as CrestronCIP
+import "../js/crestroncip.js" as CrestronCIP
 
 T.Button {
     id: controlMySwitch

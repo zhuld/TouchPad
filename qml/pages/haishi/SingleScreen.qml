@@ -1,5 +1,5 @@
 /**
- * @file Haishi/SingleScreen.qml
+ * @file qml/pages/haishi/SingleScreen.qml
  * @brief 单画面页（海事大学）
  *
  * 左卡片"输出"：大屏/地插输出选择（D161~163）；

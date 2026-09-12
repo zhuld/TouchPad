@@ -1,8 +1,8 @@
 /**
- * @file ShiyiMZ.qml
+ * @file qml/config/ShiyiMZ.qml
  * @brief 上海市第一人民医院门诊大楼指挥中心配置
  *
- * 页面列表：系统 / 视频 / 摄像机 / 音量 / 设备 / 灯光 / 测试（Pages/Shiyi/*）；
+ * 页面列表：系统 / 视频 / 摄像机 / 音量 / 设备 / 灯光 / 测试（pages/shiyi/*）；
  *   disBtnChannel=4：系统反馈 D4 为真时除"系统"外的页签全部禁用（一键关闭场景）；
  * initValue：连接后预置的反馈初值（digital/digitalToggle/analog 各通道，
  *   digitalToggle 表示写入并取反的开关量初值）；
@@ -29,7 +29,7 @@ QtObject {
     readonly property ListModel pageList: ListModel {
         ListElement {
             name: qsTr("系统")
-            pageUrl: "../Pages/Shiyi/System.qml"
+            pageUrl: "../pages/shiyi/System.qml"
             iconUrl: "qrc:/icons/home"
             test: false
             pageChannel: 11
@@ -37,7 +37,7 @@ QtObject {
         }
         ListElement {
             name: qsTr("视频")
-            pageUrl: "../Pages/Shiyi/Video.qml"
+            pageUrl: "../pages/shiyi/Video.qml"
             iconUrl: "qrc:/icons/shipin"
             test: false
             pageChannel: 12
@@ -45,7 +45,7 @@ QtObject {
         }
         ListElement {
             name: qsTr("摄像机")
-            pageUrl: "../Pages/Shiyi/CameraControl.qml"
+            pageUrl: "../pages/shiyi/CameraControl.qml"
             iconUrl: "qrc:/icons/shexiangtou"
             test: false
             pageChannel: 13
@@ -53,7 +53,7 @@ QtObject {
         }
         ListElement {
             name: qsTr("音量")
-            pageUrl: "../Pages/Shiyi/Volume.qml"
+            pageUrl: "../pages/shiyi/Volume.qml"
             iconUrl: "qrc:/icons/music"
             test: false
             pageChannel: 14
@@ -61,7 +61,7 @@ QtObject {
         }
         ListElement {
             name: qsTr("设备")
-            pageUrl: "../Pages/Shiyi/Power.qml"
+            pageUrl: "../pages/shiyi/Power.qml"
             iconUrl: "qrc:/icons/jigui"
             test: false
             pageChannel: 15
@@ -69,7 +69,7 @@ QtObject {
         }
         ListElement {
             name: qsTr("灯光")
-            pageUrl: "../Pages/Shiyi/Light.qml"
+            pageUrl: "../pages/shiyi/Light.qml"
             iconUrl: "qrc:/icons/deng"
             test: true
             pageChannel: 16
@@ -77,7 +77,7 @@ QtObject {
         }
         ListElement {
             name: qsTr("测试")
-            pageUrl: "../Pages/Test.qml"
+            pageUrl: "../pages/Test.qml"
             iconUrl: "qrc:/icons/test"
             test: true
             pageChannel: 18

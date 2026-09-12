@@ -1,5 +1,5 @@
 /**
- * @file Output.qml
+ * @file qml/custom/Output.qml
  * @brief 输出通道卡片（信号切换的目标端）
  *
  * 显示 output 通道当前接入的输入源：颜色/图标/名称取自
@@ -17,7 +17,7 @@ import QtQuick
 import QtQuick.Shapes
 import QtQuick.Effects
 
-import "../Js/crestroncip.js" as CrestronCIP
+import "../js/crestroncip.js" as CrestronCIP
 
 Item {
     id: controlOutput

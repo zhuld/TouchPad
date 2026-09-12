@@ -1,5 +1,5 @@
 /**
- * @file MyIconLabel.qml
+ * @file qml/custom/MyIconLabel.qml
  * @brief 图标+文字标签（IconLabel 封装，全项目最基础的文字/图标元素）
  *
  * 统一使用全局主题色与阿里巴巴普惠体，

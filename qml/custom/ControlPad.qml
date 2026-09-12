@@ -1,5 +1,5 @@
 /**
- * @file ControlPad.qml
+ * @file qml/custom/ControlPad.qml
  * @brief 方向控制盘（云台/光标类控制）
  *
  * 布局（Column）：
@@ -18,7 +18,7 @@ import QtQuick
 import QtQuick.Shapes
 import QtQuick.Effects
 
-import "../Js/crestroncip.js" as CrestronCIP
+import "../js/crestroncip.js" as CrestronCIP
 
 Item {
     id: controlPad
