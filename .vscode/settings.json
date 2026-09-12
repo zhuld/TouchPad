@@ -1,0 +1,14 @@
+{
+  // Use the QML language server shipped with the installed Qt instead of the
+  // standalone qmlls downloaded by the extension. The downloaded standalone
+  // qmlls cannot parse the Qt 6.11 .qmltypes files ("resolvedFile",
+  // "lineNumberInResolvedFile") and therefore reports:
+  //   "Failed to import QtQuick. Are your import paths set up properly?..."
+  "qt-qml.qmlls.customExePath": "D:/Qt/6.11.2/mingw_64/bin/qmlls.exe",
+  "qt-qml.qmlls.customDocsPath": "D:/Qt/Docs/Qt-6.11.2",
+  // Safety net: always give the QML language server Qt's QML import path,
+  // even when the CMake build directory is missing or stale.
+  "qt-qml.qmlls.additionalImportPaths": [
+    "D:/Qt/6.11.2/mingw_64/qml"
+  ]
+}
