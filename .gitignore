@@ -84,5 +84,9 @@ CMakeLists.txt.user*
 /.qtcreator/
 /output/
 
+
 # IDE / 编辑器配置（含机器相关的 Qt 绝对路径，不应入库）
 .vscode/
+
+# 未使用资源归档（仅本地留存，不入库；判定依据见 archive/README.md）
+/archive/
