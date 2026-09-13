@@ -64,16 +64,128 @@ qt_add_executable(TouchPad
     assets/fonts/fonts.qrc
 )
 
+# ===================== QML 模块文件清单 =====================
+#
+# 布局约定：QML 源码集中放在 qml/ 子目录下。
+# 下面的路径均**相对 qml/ 目录**，即每个文件在模块内期望的资源路径。
+#
+# 为什么需要 QT_RESOURCE_ALIAS：
+#   资源路径 = RESOURCE_PREFIX(/qt/qml/) + URI 目标路径(TouchPad)
+#              + 文件相对 CMAKE_CURRENT_SOURCE_DIR 的路径。
+#   若不干预，"qml/Main.qml" 会落到 :/qt/qml/TouchPad/qml/Main.qml，
+#   main.cpp 的 loadFromModule("TouchPad", "Main") 就会找不到 Main 组件。
+#   为每个文件设置 QT_RESOURCE_ALIAS 可把 "qml/" 这一层剥离掉，
+#   从而得到 :/qt/qml/TouchPad/Main.qml。
+#   这是 Qt 文档针对「.qml 文件所在目录与其目标资源路径不一致」给出的官方手段。
+#   QT_RESOURCE_ALIAS 必须在文件被 qt_add_qml_module 收录之前设置。
+#
+# 目录：
+#   config/  —— 场所配置（ConfigSet / ShiyiMZ / Haishi410 / MediaPlayer）
+#               与控件类型定义（CategoryType）
+#   custom/  —— 自定义控件（按钮 / 开关 / 旋钮 / 音量条 / 内容区等）
+#   dialog/  —— 对话框（确认 / 密码 / 进程 / 设置）
+#   js/      —— Crestron CIP 协议封装脚本
+#   pages/   —— 顶层页面（配置选择 / 连接 / 内容布局 / 测试）
+#   pages/haishi/       —— 海诗品牌控制页（摄像头 / LED / 遥控 / 单屏 / VR）
+#   pages/mediaplayer/  —— 媒体播放页（Flash / 摄像头 / 系统 / 影片 / 图片 / PPT / 声音 / 网页）
+#   pages/shiyi/        —— 世仪品牌控制页（摄像头 / 灯光 / 电源 / 系统 / 视频 / 音量）
+set(TouchPad_QML_FILES
+    Main.qml
+    Global.qml
+    config/CategoryType.qml
+    config/ConfigSet.qml
+    config/Haishi410.qml
+    config/MediaPlayer.qml
+    config/ShiyiMZ.qml
+    custom/Background.qml
+    custom/Category.qml
+    custom/ColorButton.qml
+    custom/ColorSwitch.qml
+    custom/ControlPad.qml
+    custom/Icon.qml
+    custom/InputButton.qml
+    custom/MyButton.qml
+    custom/MyIconLabel.qml
+    custom/MySwitch.qml
+    custom/MyTabButton.qml
+    custom/Output.qml
+    custom/VButton.qml
+    custom/VolumeBar.qml
+    dialog/ConfirmDialog.qml
+    dialog/PasswordDialog.qml
+    dialog/ProcessDialog.qml
+    dialog/SettingDialog.qml
+    js/crestroncip.js
+    pages/ConfigSelect.qml
+    pages/Connect.qml
+    pages/ContentColumn.qml
+    pages/ContentRow.qml
+    pages/Test.qml
+    pages/haishi/Camera.qml
+    pages/haishi/LED.qml
+    pages/haishi/Remote.qml
+    pages/haishi/SingleScreen.qml
+    pages/haishi/VR.qml
+    pages/mediaplayer/Flash.qml
+    pages/mediaplayer/MediaCamera.qml
+    pages/mediaplayer/MediaSystem.qml
+    pages/mediaplayer/Movie.qml
+    pages/mediaplayer/Picture.qml
+    pages/mediaplayer/PPT.qml
+    pages/mediaplayer/Sound.qml
+    pages/mediaplayer/Web.qml
+    pages/shiyi/CameraControl.qml
+    pages/shiyi/Light.qml
+    pages/shiyi/Power.qml
+    pages/shiyi/System.qml
+    pages/shiyi/Video.qml
+    pages/shiyi/Volume.qml
+)
+
+# 设置资源别名（剥离 "qml/" 前缀），并生成带 qml/ 前缀的源文件路径列表
+set(TouchPad_QML_FILE_PATHS "")
+foreach(qml_file IN LISTS TouchPad_QML_FILES)
+    set_source_files_properties("qml/${qml_file}"
+        PROPERTIES QT_RESOURCE_ALIAS "${qml_file}")
+    list(APPEND TouchPad_QML_FILE_PATHS "qml/${qml_file}")
+endforeach()
+
 # ---------------------------------------------------------------
-# 添加 QML 模块子目录：
-#   QML 模块定义（qt_add_qml_module）位于 qml/CMakeLists.txt。
-#   模块定义必须放在 qml/ 目录内，资源路径才会是
-#       :/qt/qml/TouchPad/Main.qml
-#   而不是 :/qt/qml/TouchPad/qml/Main.qml（后者会导致
-#   main.cpp 的 loadFromModule("TouchPad", "Main") 找不到 Main 组件）。
-#   必须置于 qt_add_executable 之后：qt_add_qml_module 需要一个已存在的目标。
+# 将 Global.qml 标记为 QML 单例（singleton）：
+#   QT_QML_SINGLETON_TYPE TRUE —— QML 代码中可直接以 "Global.xxx" 访问，
+#   无需实例化，在整个模块内共享同一份数据。
+#   该属性必须在文件被加入模块之前设置，否则 qmldir 不会写入 singleton。
 # ---------------------------------------------------------------
-add_subdirectory(qml)
+set_source_files_properties(
+    qml/Global.qml
+    PROPERTIES QT_QML_SINGLETON_TYPE TRUE)
+
+# ---------------------------------------------------------------
+# 为 TouchPad 添加 QML 模块：
+#   URI TouchPad —— 模块的导入命名空间，QML 中写作 "import TouchPad"
+#   VERSION 1.0  —— 模块版本号（主版本.次版本）
+#   QML_FILES    —— 参与编译的 QML/JS 清单（编入 qrc 并自动生成 qmldir/qmltypes）
+#   SOURCES      —— 与 QML 模块绑定的 C++ 源码（通过 QML_ELEMENT / QML_SINGLETON
+#                   注册为 QML 类型）：TCP 客户端（生产模式）与服务器端（演示模式）
+#
+# ⚠ 不要把本调用搬进 qml/CMakeLists.txt 再用 add_subdirectory() 引入：
+#   qt_add_qml_module 对「在父目录中创建的目标」跨目录调用时，
+#   qt6_extract_metatypes 会生成相对依赖
+#       meta_types/TouchPad_json_file_list.txt: TouchPad_autogen/timestamp
+#   该依赖从 qml/ 子目录作用域解析不到 build/TouchPad_autogen/，
+#   全新构建会报 "No rule to make target 'TouchPad_autogen/timestamp'"。
+# ---------------------------------------------------------------
+qt_add_qml_module(TouchPad
+    URI TouchPad
+    VERSION 1.0
+    QML_FILES
+        ${TouchPad_QML_FILE_PATHS}
+    SOURCES
+        src/network/TcpClient.cpp
+        src/network/TcpClient.h
+        src/network/TcpServer.cpp
+        src/network/TcpServer.h
+)
 
 # ---------------------------------------------------------------
 # 目标属性设置（macOS bundle / Windows / Android 相关）：

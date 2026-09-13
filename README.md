@@ -95,8 +95,7 @@ QML 属性绑定自动刷新界面
 
 ```
 TouchPad/
-├── CMakeLists.txt               # 顶层构建脚本：可执行目标 + C++/资源 + 安装规则
-│                                #   （QML 模块定义见 qml/CMakeLists.txt）
+├── CMakeLists.txt               # 构建脚本：可执行目标 + QML 模块定义 + 资源 + 安装规则
 ├── package.bat                  # Windows 打包脚本（windeployqt）
 ├── agent.md                     # QML / C++ 开发规范
 ├── README.md   LICENSE   .gitignore
@@ -107,8 +106,7 @@ TouchPad/
 │       ├── TcpClient.cpp/.h     # TCP 客户端（生产模式）
 │       └── TcpServer.cpp/.h     # TCP 服务器（演示模式）
 │
-├── qml/                         # QML 模块根目录（URI: TouchPad）
-│   ├── CMakeLists.txt           # qt_add_qml_module 模块定义
+├── qml/                         # QML 源码目录（模块 URI: TouchPad）
 │   ├── Main.qml                 # 主窗口（模块根组件）
 │   ├── Global.qml               # QML 全局单例（状态/主题/设置）
 │   ├── config/                  # 场所配置文件
@@ -173,24 +171,38 @@ cmake --build build
 
 ### QML 模块目录布局（重要）
 
-`qt_add_qml_module` 按「QML 文件相对 `qml/CMakeLists.txt` 所在目录的路径」
-拼接出资源路径（前缀 `/qt/qml/` + 模块 URI `TouchPad`）：
+QML 源码集中在 `qml/` 下，但**模块的资源根不是 `qml/`**。
+`qt_add_qml_module` 的资源路径由下式决定：
 
-| 源文件 | 资源路径 |
-| --- | --- |
-| `qml/Main.qml` | `:/qt/qml/TouchPad/Main.qml` |
-| `qml/pages/haishi/LED.qml` | `:/qt/qml/TouchPad/pages/haishi/LED.qml` |
+```
+资源路径 = RESOURCE_PREFIX(/qt/qml/) + URI 目标路径(TouchPad)
+         + 文件相对 CMAKE_CURRENT_SOURCE_DIR 的路径
+```
 
-由此得出三条维护约束：
+若直接在根 `CMakeLists.txt` 写 `qml/Main.qml`，资源会落到
+`:/qt/qml/TouchPad/qml/Main.qml`，`loadFromModule("TouchPad", "Main")` 就找不到组件。
+因此根 `CMakeLists.txt` 为每个 QML 文件设置了 **`QT_RESOURCE_ALIAS`**，
+把 `qml/` 这一层剥离掉：
 
-1. **模块定义必须位于 `qml/CMakeLists.txt`**。若在根 `CMakeLists.txt` 中直接写
-   `qml/Main.qml`，资源会落到 `:/qt/qml/TouchPad/qml/Main.qml`，
-   `loadFromModule("TouchPad", "Main")` 将找不到 `Main` 组件。
-2. **QML 之间用相对 URL 互相引用**（`Main.qml` 的 `Loader.source`、`config/*.qml` 的
-   `pageUrl`、`custom/*.qml` 的 `../js/crestroncip.js`）。调整目录层级时必须同步修正，
-   否则错误只在运行期暴露。
-3. **新增文件需登记**：QML 加入 `qml/CMakeLists.txt` 的 `QML_FILES`；
-   静态资源加入 `assets/<类型>/<类型>.qrc`。
+| 源文件 | `QT_RESOURCE_ALIAS` | 资源路径 |
+| --- | --- | --- |
+| `qml/Main.qml` | `Main.qml` | `:/qt/qml/TouchPad/Main.qml` |
+| `qml/pages/haishi/LED.qml` | `pages/haishi/LED.qml` | `:/qt/qml/TouchPad/pages/haishi/LED.qml` |
+
+维护约束：
+
+1. **模块定义必须与 `qt_add_executable` 同目录**（根 `CMakeLists.txt`）。
+   不要为了把模块定义移到 `qml/` 而使用 `add_subdirectory()` ——
+   `qt_add_qml_module` 对「在父目录创建的目标」跨目录调用时，`qt6_extract_metatypes`
+   会生成相对依赖 `meta_types/TouchPad_json_file_list.txt: TouchPad_autogen/timestamp`，
+   该依赖在 `qml/` 作用域下解析不到 `build/TouchPad_autogen/`，
+   全新构建会报 `No rule to make target 'TouchPad_autogen/timestamp'`。
+2. **新增 QML 文件**：只需加入 `TouchPad_QML_FILES` 列表，
+   资源别名由紧随其后的 `foreach` 循环统一设置，无需手工写 `set_source_files_properties`。
+3. **QML 之间用相对 URL 互相引用**（`Main.qml` 的 `Loader.source`、
+   `config/*.qml` 的 `pageUrl`、`custom/*.qml` 的 `../js/crestroncip.js`）。
+   调整目录层级时必须同步修正，否则错误只在运行期暴露。
+4. **新增静态资源**：登记到 `assets/<类型>/<类型>.qrc`。
 
 ## 打包（Windows）
 
